@@ -1,0 +1,141 @@
+---
+// AgriParticlesBg.astro
+// Este componente crea un fondo animado con partículas orgánicas.
+---
+
+<!-- Canvas fixed para cubrir toda la pantalla y quedar detrás de todo -->
+<canvas id="agri-bg" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"></canvas>
+
+<script>
+  const canvas = document.getElementById('agri-bg') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d');
+  let animationFrameId: number;
+
+  function resize() {
+    if (!ctx) return;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // Configuración de partículas
+  // Ajusta la cantidad total de partículas según el rendimiento
+  const totalParticles = 60; 
+  const particles: any[] = [];
+
+  const particleTypes = {
+    water: {
+      color: 'rgba(100, 180, 250, 0.4)', // Azul claro agua
+      baseSpeed: 1.5,
+      sizeRange: [1, 2.5]
+    },
+    leaf: {
+      color: 'rgba(120, 190, 120, 0.5)', // Verde hoja
+      baseSpeed: 0.5,
+      sizeRange: [3, 5] // Más grandes
+    },
+    dirt: {
+      color: 'rgba(160, 140, 110, 0.3)', // Marrón tierra pálido
+      baseSpeed: 0.2,
+      sizeRange: [1.5, 3]
+    }
+  };
+
+  const types = ['water', 'leaf', 'dirt'];
+
+  class Particle {
+    x!: number;
+    y!: number;
+    speedY!: number;
+    speedX!: number; // Para hojas y tierra
+    radius!: number;
+    type!: string;
+    opacity!: number;
+    leafAngle!: number; // Para el movimiento de la hoja
+    leafOscillationSpeed!: number; // Para el movimiento de la hoja
+
+    constructor() {
+      if (!ctx) return;
+      this.type = types[Math.floor(Math.random() * types.length)];
+      const config = (particleTypes as any)[this.type];
+      
+      this.x = Math.random() * ctx.canvas.width;
+      this.y = Math.random() * ctx.canvas.height;
+      this.radius = Math.random() * (config.sizeRange[1] - config.sizeRange[0]) + config.sizeRange[0];
+      this.speedY = (Math.random() + 1) * config.baseSpeed;
+      this.speedX = (this.type === 'leaf' || this.type === 'dirt') ? (Math.random() - 0.5) * 0.5 : 0;
+      this.opacity = (this.type === 'dirt') ? Math.random() * 0.3 + 0.1 : config.color.match(/rgba\(\d+,\s*\d+,\s*\d+,\s*([\d.]+)\)/)[1];
+      this.leafAngle = Math.random() * Math.PI * 2;
+      this.leafOscillationSpeed = Math.random() * 0.02 + 0.01;
+    }
+
+    draw() {
+      if (!ctx) return;
+      const config = (particleTypes as any)[this.type];
+      
+      ctx.beginPath();
+      ctx.globalAlpha = this.opacity;
+      
+      if (this.type === 'leaf') {
+        // Hojas: Se dibujan como elipses alargadas para darles forma
+        ctx.ellipse(this.x, this.y, this.radius, this.radius * 0.5, this.leafAngle, 0, Math.PI * 2);
+      } else {
+        // Agua y Tierra: Círculos simples
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      }
+      
+      ctx.fillStyle = `rgba(${config.rgb}, ${this.opacity})`;
+      ctx.fill();
+    }
+
+    update() {
+      if (!ctx) return;
+      this.y += this.speedY;
+      this.x += this.speedX;
+
+      if (this.type === 'leaf') {
+        this.leafAngle += this.leafOscillationSpeed;
+        this.x += Math.sin(this.leafAngle) * 0.5; // Movimiento lateral de balanceo
+      }
+      if (this.type === 'dirt') {
+          // El polvo flota un poco más errático
+          this.x += (Math.random() - 0.5) * 0.3;
+      }
+
+      // Si la partícula sale por abajo, reaparece arriba
+      if (this.y > ctx.canvas.height) {
+        this.y = -20;
+        this.x = Math.random() * ctx.canvas.width;
+        this.leafAngle = Math.random() * Math.PI * 2; // Reinicia el ángulo de la hoja
+      }
+    }
+  }
+
+  // Inicializar partículas
+  for (let i = 0; i < totalParticles; i++) {
+    particles.push(new Particle());
+  }
+
+  function animate() {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    particles.forEach(particle => {
+      particle.update();
+      particle.draw();
+    });
+
+    animationFrameId = requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // Limpiar animación si el componente se desmonta (útil si usas Astro con view transitions)
+  document.addEventListener('astro:before-preparation', () => {
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+    }
+  });
+
+</script>
