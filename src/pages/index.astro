@@ -1,14 +1,34 @@
 ---
-import { Sidebar } from "@components/modules/Sidebar";
-import { Navbar } from "@components/modules/Navbar";
-import MainLayout from "@/layouts/MainLayout.astro";
-import MainSection from "@components/sections/MainSection.astro"
 
-import "../styles/global.css";
 ---
 
-<MainLayout>
-  <Navbar client:load slot={"header"} title="T.E.R.R.A." />
-  <Sidebar client:load className="lg:hidden lg:w-0 md:hidden md:w-0" />
-  <MainSection />
-</MainLayout>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Redirecting…</title>
+    <script>
+      // Client-only detection and redirect: use navigator language to pick locale
+      (function () {
+        try {
+          var navLang =
+            (navigator.languages && navigator.languages[0]) ||
+            navigator.language ||
+            "en";
+          var lang = /^es/i.test(navLang) ? "es-MX" : "en-GB";
+          // use replace so back button doesn't keep this redirect page
+          location.replace("/" + lang + "/");
+        } catch (e) {
+          location.replace("/es-MX/");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p>
+      Redirecting… If you are not redirected, go to <a href="/es-MX/"
+        >/es-MX/</a>
+    </p>
+  </body>
+</html>

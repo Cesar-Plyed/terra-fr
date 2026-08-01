@@ -15,7 +15,7 @@ export const getNavItems = (langPrefix: string): NavItem[] => {
   if (langPrefix === '/es-MX') {
     return [
       { label: 'Inicio', href: `${langPrefix}/` },
-      { label: 'Acerca de Mi', href: `${langPrefix}/about` },
+      { label: 'Acerca de nosotros', href: `${langPrefix}/about` },
       { label: 'Contacto', href: `${langPrefix}/contact` },
     ];
   }

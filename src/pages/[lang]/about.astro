@@ -1,0 +1,447 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import en from "@/locales/en-GB.json";
+import es from "@/locales/es-MX.json";
+
+export async function getStaticPaths() {
+  return [{ params: { lang: "en-GB" } }, { params: { lang: "es-MX" } }];
+}
+
+type TranslationSchema = typeof es;
+
+const { lang } = Astro.params;
+
+const translations: Record<string, TranslationSchema> = {
+  "es-MX": es,
+  "en-GB": en as unknown as TranslationSchema,
+};
+
+const currentLang = lang && lang in translations ? lang : "es-MX";
+const i18n = translations[currentLang];
+
+const title = i18n.meta.title;
+
+// Colores oficiales de la ONU para los Objetivos de Desarrollo Sostenible.
+// Usar el color real de cada ODS convierte el bloque en información
+// reconocible en vez de una tarjeta genérica más.
+const sdgColors: Record<number, string> = {
+  1: "#E5243B",
+  2: "#DDA63A",
+  3: "#4C9F38",
+  4: "#C5192D",
+  5: "#FF3A21",
+  6: "#26BDE2",
+  7: "#FCC30B",
+  8: "#A21942",
+  9: "#FD6925",
+  10: "#DD1367",
+  11: "#FD9D24",
+  12: "#BF8B2E",
+  13: "#3F7E44",
+  14: "#0A97D9",
+  15: "#56C02B",
+  16: "#00689D",
+  17: "#19486A",
+};
+
+const getSdgColor = (code: string) => {
+  const match = code.match(/\d+/);
+  const num = match ? parseInt(match[0], 10) : 0;
+  return sdgColors[num] ?? "#7A7A7A";
+};
+---
+
+<MainLayout title={title} lang={currentLang}>
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 mt-4 lg:px-8 py-8 md:py-20 space-y-20 bg-black/50 border-white/30 border rounded-4xl transform-[translateZ(0)] contain-[layout_paint]"
+  >
+    <!-- HERO SECTION -->
+    <section
+      class="reveal-on-scroll text-center space-y-5 max-w-3xl mx-auto w-full"
+    >
+      <div class="flex justify-center">
+        <span
+          class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold bg-secondary-bg-button text-title border border-secondary-border-button"
+        >
+          {i18n.hero.badge}
+        </span>
+      </div>
+
+      <h1
+        class="text-4xl sm:text-5xl font-extrabold tracking-tight text-title leading-tight w-full"
+      >
+        {i18n.hero.title}
+        <span class="block text-xl sm:text-2xl font-medium text-subtitle mt-3">
+          {i18n.hero.fullTitle}
+        </span>
+      </h1>
+
+      <p class="text-base sm:text-lg text-paragraph leading-relaxed w-full">
+        {i18n.hero.description}
+      </p>
+    </section>
+
+    <!-- PROBLEMA Y SOLUCIÓN (DOS COLUMNAS) -->
+    <section
+      class="reveal-on-scroll lazy-section grid grid-cols-1 md:grid-cols-2 gap-8 w-full"
+    >
+      <!-- Tarjeta Problema -->
+      <div
+        class="p-8 rounded-xl bg-sidebar-bg border border-sidebar-border space-y-6 shadow-lg"
+      >
+        <div class="space-y-2">
+          <div class="flex items-center gap-2">
+            <span
+              class="flex items-center justify-center w-6 h-6 rounded-md bg-rose-500/15 text-rose-500 shrink-0"
+            >
+              <svg
+                class="w-3.5 h-3.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </span>
+            <h2 class="text-2xl font-bold text-title">{i18n.problem.title}</h2>
+          </div>
+          <p class="text-sm font-semibold text-subtitle pl-8">
+            {i18n.problem.subtitle}
+          </p>
+        </div>
+        <p class="text-paragraph text-sm leading-relaxed">
+          {i18n.problem.description}
+        </p>
+        <div class="space-y-3 pt-2">
+          {
+            i18n.problem.painPoints.map((point, index) => (
+              <div
+                class="stagger-item p-4 rounded-lg bg-secondary-bg-button border border-secondary-border-button border-l-2 border-l-rose-500/60"
+                style={`--stagger-index: ${index}`}
+              >
+                <h3 class="font-semibold text-title text-sm">{point.title}</h3>
+                <p class="text-xs text-paragraph mt-1 opacity-90">
+                  {point.description}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Tarjeta Solución -->
+      <div
+        class="p-8 rounded-xl bg-sidebar-bg border border-sidebar-border space-y-6 shadow-lg"
+      >
+        <div class="space-y-2">
+          <div class="flex items-center gap-2">
+            <span
+              class="flex items-center justify-center w-6 h-6 rounded-md bg-emerald-500/15 text-emerald-500 shrink-0"
+            >
+              <svg
+                class="w-3.5 h-3.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M5 13l4 4L19 7"></path>
+              </svg>
+            </span>
+            <h2 class="text-2xl font-bold text-title">{i18n.solution.title}</h2>
+          </div>
+          <p class="text-sm font-semibold text-subtitle pl-8">
+            {i18n.solution.subtitle}
+          </p>
+        </div>
+        <p class="text-paragraph text-sm leading-relaxed">
+          {i18n.solution.description}
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+          {
+            i18n.solution.features.map((feature, index) => (
+              <div
+                class="stagger-item p-4 rounded-lg bg-secondary-bg-button border border-secondary-border-button border-l-2 border-l-emerald-500/60"
+                style={`--stagger-index: ${index}`}
+              >
+                <h3 class="font-semibold text-title text-sm">
+                  {feature.title}
+                </h3>
+                <p class="text-xs text-paragraph mt-1 opacity-90">
+                  {feature.description}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- PROPUESTA DE VALOR / COMPARATIVA -->
+    <section class="reveal-on-scroll lazy-section space-y-8 w-full">
+      <div class="text-center max-w-3xl mx-auto space-y-3 w-full">
+        <h2 class="text-3xl font-bold text-title w-full">
+          {i18n.valueProposition.title}
+        </h2>
+        <p
+          class="text-paragraph italic text-sm sm:text-base leading-relaxed w-full"
+        >
+          "{i18n.valueProposition.statement}"
+        </p>
+      </div>
+
+      <!-- Tabla Adaptable -->
+      <div
+        class="overflow-x-auto rounded-xl border border-sidebar-border shadow-lg scrollbar-hidden"
+      >
+        <table class="w-full text-left text-sm text-paragraph">
+          <thead
+            class="bg-sidebar-bg text-xs uppercase tracking-wider text-title border-b border-sidebar-border"
+          >
+            <tr>
+              <th scope="col" class="px-6 py-4"
+                >{i18n.valueProposition.comparisonTable.headers.option}</th
+              >
+              <th scope="col" class="px-6 py-4"
+                >{i18n.valueProposition.comparisonTable.headers.approxPrice}</th
+              >
+              <th scope="col" class="px-6 py-4"
+                >{
+                  i18n.valueProposition.comparisonTable.headers.mainLimitation
+                }</th
+              >
+              <th scope="col" class="px-6 py-4"
+                >{
+                  i18n.valueProposition.comparisonTable.headers.terraAdvantage
+                }</th
+              >
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-sidebar-border bg-sidebar-bg/60">
+            {
+              i18n.valueProposition.comparisonTable.rows.map((row, index) => {
+                const isTerra = row.option.includes("T.E.R.R.A.");
+                return (
+                  <tr
+                    class:list={[
+                      "stagger-row",
+                      isTerra
+                        ? "bg-sidebar-item-bg-active/20 font-medium text-title"
+                        : "hover:bg-secondary-bg-button",
+                    ]}
+                    style={`--stagger-index: ${index}`}
+                  >
+                    <td class="px-6 py-4 font-semibold text-title whitespace-nowrap">
+                      <span class="inline-flex items-center gap-2">
+                        {row.option}
+                        {isTerra && (
+                          <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-primary-bg-button text-title border border-primary-border-button">
+                            Recomendado
+                          </span>
+                        )}
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-subtitle">
+                      {row.approxPrice}
+                    </td>
+                    <td class="px-6 py-4">{row.mainLimitation}</td>
+                    <td class="px-6 py-4 font-semibold text-title">
+                      {row.terraAdvantage}
+                    </td>
+                  </tr>
+                );
+              })
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- IMPACTO Y ODS DE LA ONU -->
+    <section
+      class="reveal-on-scroll lazy-section p-8 sm:p-10 rounded-xl bg-sidebar-bg border border-sidebar-border space-y-8 shadow-lg w-full"
+    >
+      <div class="space-y-2">
+        <h2 class="text-3xl font-bold text-title">
+          {i18n.technicalAndImpact.title}
+        </h2>
+        <p class="text-subtitle text-sm">
+          Comprometidos con la tecnología ética, sustentable y accesible.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {
+          i18n.technicalAndImpact.sdgAlignment.map((sdg, index) => {
+            const color = getSdgColor(sdg.code);
+            return (
+              <div
+                class="stagger-item rounded-lg bg-secondary-bg-button border border-secondary-border-button overflow-hidden"
+                style={`--stagger-index: ${index}`}
+              >
+                <div class="h-1" style={`background-color: ${color}`} />
+                <div class="p-5 space-y-2">
+                  <div class="flex items-center gap-2">
+                    <span
+                      class="flex items-center justify-center w-6 h-6 rounded-full text-[10px] font-bold text-white shrink-0"
+                      style={`background-color: ${color}`}
+                    >
+                      {sdg.code.match(/\d+/)?.[0]}
+                    </span>
+                    <span class="text-xs font-bold text-subtitle uppercase tracking-wider">
+                      {sdg.code}
+                    </span>
+                  </div>
+                  <h3 class="font-semibold text-title text-base">{sdg.name}</h3>
+                  <p class="text-xs text-paragraph leading-relaxed opacity-90">
+                    {sdg.impact}
+                  </p>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION (CTA) -->
+    <section
+      class="reveal-on-scroll lazy-section text-center p-8 sm:p-12 rounded-xl bg-sidebar-bg border border-sidebar-border space-y-6 shadow-xl max-w-4xl mx-auto w-full"
+    >
+      <h2
+        class="text-2xl sm:text-3xl font-bold text-title max-w-5xl mx-auto w-full leading-snug"
+      >
+        {i18n.callToAction.title}
+      </h2>
+      <p
+        class="text-paragraph max-w-3xl mx-auto text-sm sm:text-base leading-relaxed w-full"
+      >
+        {i18n.callToAction.description}
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 pt-4">
+        <!-- Botón Primario -->
+        <a
+          href="/es-MX/OnDevelop"
+          class="group inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary-bg-button text-title font-semibold text-sm transition-all duration-200 border border-primary-border-button shadow-md hover:opacity-90"
+        >
+          {i18n.callToAction.primaryButton}
+          <svg
+            class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+        <!-- Botón Secundario -->
+        <a
+          href="/es-MX/contact"
+          class="px-6 py-3 rounded-md bg-secondary-bg-button text-secondary-fg-button font-semibold text-sm transition-all duration-200 border border-secondary-border-button hover:bg-sidebar-item-bg-hover"
+        >
+          {i18n.callToAction.secondaryButton}
+        </a>
+      </div>
+    </section>
+  </div>
+</MainLayout>
+
+<!-- Estilos de animación: revelado de sección + cascada de tarjetas -->
+<style>
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* content-visibility: el navegador se salta el layout/paint de las
+     secciones que aún no están en pantalla, aligerando la carga inicial.
+     contain-intrinsic-size evita saltos de scroll mientras se mide. */
+  .lazy-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 600px;
+  }
+
+  /* Cascada: las tarjetas dentro de una sección aparecen una tras otra,
+     no todas de golpe. El retraso se calcula con --stagger-index. */
+  .stagger-item,
+  .stagger-row {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.5s ease-out,
+      transform 0.5s ease-out;
+    transition-delay: calc(var(--stagger-index, 0) * 80ms);
+  }
+
+  .is-visible .stagger-item,
+  .is-visible .stagger-row {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll,
+    .stagger-item,
+    .stagger-row {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<!-- Script: observa la entrada en viewport y limpia observers en cada
+     transición de página para evitar fugas de memoria -->
+<script>
+  let observer: IntersectionObserver | null = null;
+
+  const setupIntersectionObserver = () => {
+    // Desconecta cualquier observer previo (por ejemplo, tras una
+    // View Transition de Astro) antes de crear uno nuevo.
+    observer?.disconnect();
+
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer?.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15,
+      },
+    );
+
+    document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
+      observer?.observe(el);
+    });
+  };
+
+  setupIntersectionObserver();
+  document.addEventListener("astro:after-swap", setupIntersectionObserver);
+  document.addEventListener("astro:before-swap", () => observer?.disconnect());
+</script>

@@ -1,0 +1,259 @@
+{
+  "language": "es",
+  "meta": {
+    "title": "T.E.R.R.A. - Topo Estratégico de Reconocimiento y Rastreo Agroambiental",
+    "description": "Robot agrícola solar autónomo para monitoreo de humedad de suelo en tiempo real y optimización del riego en la agricultura de precisión.",
+    "keywords": [
+      "agrotech",
+      "riego inteligente",
+      "monitoreo de suelo",
+      "robot agrícola solar",
+      "sustentabilidad",
+      "agricultura de precisión",
+      "Aguascalientes",
+      "eficiencia hídrica"
+    ],
+    "slug": "terra-agrotech-solar"
+  },
+  "hero": {
+    "badge": "Innovación Agrotech Sustentable",
+    "title": "T.E.R.R.A.",
+    "fullTitle": "Topo Estratégico de Reconocimiento y Rastreo Agroambiental",
+    "subtitle": "Monitoreo inteligente del suelo para un uso responsable y eficiente del agua.",
+    "description": "Un robot agrícola solar autónomo que mide la humedad del suelo zona por zona, entregando datos precisos en tiempo real sin depender de internet ni de la red eléctrica.",
+    "primaryCTA": "Solicitar Demostración",
+    "secondaryCTA": "Ver Propuesta de Valor"
+  },
+  "problem": {
+    "title": "El Desafío del Agua en la Agricultura",
+    "subtitle": "El agua es el recurso más caro de desperdiciar y el que menos se mide.",
+    "description": "En regiones con altas temperaturas y sequías prolongadas, como Aguascalientes, el riego por calendario o intuición genera pérdidas masivas de agua y recursos financieros.",
+    "painPoints": [
+      {
+        "id": "irrigation_without_data",
+        "title": "Riego a ciegas",
+        "description": "La mayoría de los pequeños y medianos productores riegan por costumbre o calendario, no por datos reales de humedad del suelo, gastando agua donde no hace falta.",
+        "impact": "Alto desperdicio hídrico y costos innecesarios de operación."
+      },
+      {
+        "id": "high_barriers",
+        "title": "Tecnología inaccesible",
+        "description": "Las soluciones comerciales existentes son sumamente costosas ($4,000 a $50,000 MXN) y requieren infraestructura compleja.",
+        "impact": "Exclusión de pequeños productores, huertos comunitarios y escuelas."
+      },
+      {
+        "id": "infrastructure_dependency",
+        "title": "Dependencia de red e internet",
+        "description": "Los sistemas inteligentes tradicionales fallan o no se pueden instalar en zonas sin cobertura de internet o sin energía eléctrica de red.",
+        "impact": "Inviabilidad de adopción en terrenos aislados o rurales."
+      }
+    ]
+  },
+  "solution": {
+    "title": "La Solución T.E.R.R.A.",
+    "subtitle": "Movilidad + Sensores de Humedad + Energía Solar en una sola plataforma de bajo costo.",
+    "description": "T.E.R.R.A. es un robot móvil con alimentación 100% solar que recorre el terreno de manera autónoma midiendo la humedad del suelo en tiempo real. A diferencia de un sistema automatizado rígido, T.E.R.R.A. empodera al productor dándole la información precisa para decidir exactamente dónde y cuánto regar.",
+    "features": [
+      {
+        "code": "SOLAR_POWER",
+        "title": "Navegación Solar Autónoma",
+        "description": "Alimentado completamente por paneles solares, operando sin consumo de la red eléctrica.",
+        "icon": "sun"
+      },
+      {
+        "code": "REALTIME_SENSING",
+        "title": "Sensado en Tiempo Real",
+        "description": "Mide los niveles de humedad en el perfil del suelo punto por punto con alta precisión.",
+        "icon": "activity"
+      },
+      {
+        "code": "OFFLINE_OP",
+        "title": "Operación Sin Internet",
+        "description": "Funciona de manera totalmente independiente de conexiones Wi-Fi o redes móviles.",
+        "icon": "wifi-off"
+      },
+      {
+        "code": "ANOMALY_DETECTION",
+        "title": "Detección de Anomalías",
+        "description": "Identifica variaciones atípicas de humedad para prevenir el estrés hídrico o el encharcamiento.",
+        "icon": "alert-circle"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Beneficios Clave",
+    "items": [
+      {
+        "title": "Ahorro de Agua Significativo",
+        "description": "Reduce el desperdicio del recurso hídrico al aplicar riego solo en zonas con requerimiento real.",
+        "category": "Ecológico"
+      },
+      {
+        "title": "Toma de Decisiones Basada en Datos",
+        "description": "Sustituye la intuición por diagnósticos técnicos precisos y visuales.",
+        "category": "Estratégico"
+      },
+      {
+        "title": "Cero Costo Energético Operativo",
+        "description": "Aprovechamiento 100% solar, eliminando costos recurrentes de electricidad o baterías desechables.",
+        "category": "Económico"
+      },
+      {
+        "title": "Bajo Costo de Adquisición",
+        "description": "Prototipado e ingeniería optimizada con un costo aproximado de electrónica de $2,165 MXN.",
+        "category": "Económico"
+      },
+      {
+        "title": "Inclusivo y Educativo",
+        "description": "Ideal para pequeños productores, huertos escolares, proyectos universitarios e investigación.",
+        "category": "Social"
+      },
+      {
+        "title": "Escalabilidad Agrícola",
+        "description": "Plataforma adaptable para incorporar sensores adicionales en proyectos de investigación avanzada.",
+        "category": "Tecnológico"
+      }
+    ]
+  },
+  "valueProposition": {
+    "title": "Propuesta de Valor Única",
+    "statement": "T.E.R.R.A. no compite por ser el sistema más sofisticado del mercado — compite por ser el más accesible sin sacrificar la inteligencia de datos.",
+    "comparisonTable": {
+      "headers": {
+        "option": "Opción de Riego / Monitoreo",
+        "approxPrice": "Precio Aprox. (MXN)",
+        "mainLimitation": "Limitación Principal",
+        "terraAdvantage": "Ventaja Competitiva de T.E.R.R.A."
+      },
+      "rows": [
+        {
+          "option": "Temporizador Automático",
+          "approxPrice": "$1,500 – $3,000 MXN",
+          "mainLimitation": "Riega por tiempo fijo, sin importar si el suelo está saturado.",
+          "terraAdvantage": "Sensado real: evita regar cuando el suelo ya tiene humedad suficiente."
+        },
+        {
+          "option": "Sensores Inteligentes Wi-Fi",
+          "approxPrice": "$4,000 – $8,000 MXN",
+          "mainLimitation": "Requiere cobertura constante de internet y red eléctrica cercana.",
+          "terraAdvantage": "Totalmente autónomo en energía y sin necesidad de internet."
+        },
+        {
+          "option": "Sistema Profesional Automatizado",
+          "approxPrice": "$15,000 – $50,000 MXN",
+          "mainLimitation": "Costo de inversión y mantenimiento extremadamente elevado.",
+          "terraAdvantage": "Fracción del costo con movilidad que cubre amplias áreas."
+        },
+        {
+          "option": "T.E.R.R.A. (Robot Solar)",
+          "approxPrice": "≈ $2,165 MXN (Electrónica)",
+          "mainLimitation": "Informativo (brinda datos para decidir, no efectúa riego directo)",
+          "terraAdvantage": "Máxima accesibilidad, movilidad, autonomía solar y datos precisos."
+        }
+      ]
+    }
+  },
+  "targetAudience": {
+    "title": "¿Para Quién Es T.E.R.R.A.?",
+    "demographics": {
+      "ageRange": "18 - 60 años",
+      "profile": "Personas enfocadas en la optimización agrícola, sustentabilidad e innovación tecnológica accesible."
+    },
+    "segments": [
+      {
+        "title": "Pequeños y Medianos Productores",
+        "description": "Agricultores de campo abierto e invernaderos que buscan optimizar el uso de agua sin realizar inversiones millonarias.",
+        "useCase": "Monitoreo periódico de parcelas para ajustar tiempos y volúmenes de riego."
+      },
+      {
+        "title": "Instituciones Educativas y Huertos Escolares",
+        "description": "Escuelas secundarias, preparatorias y universidades con programas de agroecología, robótica o sustentabilidad.",
+        "useCase": "Herramienta didáctica interactiva para enseñar ciencia del suelo, automatización y energías limpias."
+      },
+      {
+        "title": "Técnicos e Investigadores Agroambientales",
+        "description": "Centros de investigación y asesores agrícolas que requieren recolectar datos de campo de bajo costo.",
+        "useCase": "Plataforma experimental para recolección de series de tiempo de humedad del suelo."
+      }
+    ]
+  },
+  "technicalAndImpact": {
+    "title": "Respaldo Técnico y Alineación ODS",
+    "technicalFoundation": [
+      "Principios de Agricultura de Precisión",
+      "Monitoreo directo de humedad volumétrica del suelo",
+      "Robótica móvil y automatización de bajo consumo",
+      "Generación y gestión de energía fotovoltaica integradas"
+    ],
+    "sdgAlignment": [
+      {
+        "code": "ODS 6",
+        "name": "Agua Limpia y Saneamiento",
+        "impact": "Fomenta la gestión sostenible del agua reduciendo el desperdicio agrícola."
+      },
+      {
+        "code": "ODS 7",
+        "name": "Energía Asequible y No Contaminante",
+        "impact": "Operación 100% basada en energía solar renovable sin huella de carbono."
+      },
+      {
+        "code": "ODS 9",
+        "name": "Industria, Innovación e Infraestructura",
+        "impact": "Democratiza la tecnología robótica y el internet de las cosas en el campo."
+      },
+      {
+        "code": "ODS 13",
+        "name": "Acción por el Clima",
+        "impact": "Aumenta la resiliencia agrícola ante sequías y eventos climáticos extremos."
+      }
+    ]
+  },
+  "callToAction": {
+    "title": "¿Listo para transformar el riego en tu parcela o institución?",
+    "description": "Te invitamos a conocer T.E.R.R.A. Agenda una demostración en vivo del prototipo y descubre cómo optimizar tus recursos.",
+    "primaryButton": "Solicitar Demostración",
+    "secondaryButton": "Contacto Directo",
+    "contactInfo": {
+      "region": "Aguascalientes, México",
+      "availability": "Demostraciones de prototipo bajo agenda"
+    }
+  },
+  "contact": {
+    "title": "Contacto | T.E.R.R.A.",
+    "badge": "Contacto Directo",
+    "heading": "Hablemos de tu proyecto",
+    "description": "¿Tienes dudas sobre T.E.R.R.A. o te interesa agendar una demostración en vivo? Escríbenos y nuestro equipo se pondrá en contacto contigo.",
+    "cards": [
+      {
+      "emailTitle": "Correo Electrónico",
+      "emailSubtitle": "Escríbenos para consultas generales o comerciales.",
+      "locationTitle": "Ubicación & Cobertura",
+      "locationSubtitle": "Operaciones y centro de pruebas agrícolas.",
+      "locationValue": "Aguascalientes, México",
+      "hoursTitle": "Horario de Atención",
+      "hoursValue": "Lunes a Viernes: 8:00 AM – 6:00 PM (CST)",
+      "icon": "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+      "href":"mailto:contacto@terra-project.com",
+      "value": "contacto@terra-project.com"
+    }
+    ],
+    "form": {
+      "title": "Envíanos un mensaje",
+      "subtitle": "Llena los campos a continuación y responderemos a la brevedad.",
+      "nameLabel": "Nombre completo",
+      "namePlaceholder": "Ej. Carlos Mendoza",
+      "emailLabel": "Correo Electrónico",
+      "emailPlaceholder": "tu@correo.com",
+      "subjectLabel": "Asunto / Interés",
+      "options": {
+        "demo": "Solicitar Demostración en Vivo",
+        "info": "Información Técnica del Prototipo",
+        "collab": "Alianza / Proyecto Institucional",
+        "other": "Otro asunto"
+      },
+      "messageLabel": "Mensaje",
+      "messagePlaceholder": "Escribe tu mensaje o detalles sobre tu parcela/institución...",
+      "submitButton": "Enviar Mensaje"
+    }
+  }
+}

@@ -62,7 +62,7 @@ export const Navbar: React.FC<NavbarProps> = ({ title, className = '', lang }) =
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-30 transition-transform duration-300 ease-in-out h-full ${
+      className={`fixed top-0 left-0 right-0 z-30 transition-transform duration-300 ease-in-out h-fit ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } ${className}`}
     >

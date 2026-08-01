@@ -1,0 +1,282 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import en from "../../locales/en-GB.json";
+import es from "../../locales/es-MX.json";
+
+export async function getStaticPaths() {
+  return [{ params: { lang: "en-GB" } }, { params: { lang: "es-MX" } }];
+}
+
+const { lang } = Astro.params;
+type TranslationSchema = typeof es;
+
+const translations: Record<string, TranslationSchema> = {
+  "es-MX": es,
+  "en-GB": en as unknown as TranslationSchema,
+};
+
+const currentLang = lang && lang in translations ? lang : "es-MX";
+const i18n = translations[currentLang];
+
+const title = i18n.contact.title;
+
+const contactInfo = i18n.contact.cards;
+
+const subjects = [
+  { id: "demo", label: "Solicitar Demostración" },
+  { id: "info", label: "Información Técnica" },
+  { id: "collab", label: "Alianza / Institucional" },
+  { id: "other", label: "Otro asunto" },
+];
+---
+
+<MainLayout title={title} lang={lang}>
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 mt-4 lg:px-8 py-8 md:py-20 space-y-14 bg-black/50 border-white/30 border rounded-4xl will-change-transform transform-[translateZ(0)] contain-[layout_paint]"
+  >
+    <!-- HEADER SECTION -->
+    <section class="reveal-on-scroll text-center space-y-4 mx-auto w-full">
+      <div class="flex justify-center items-center gap-2">
+        <span
+          class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-secondary-bg-button text-title border border-secondary-border-button"
+        >
+          <span
+            class="w-1.5 h-1.5 rounded-full bg-primary-bg-button animate-pulse"
+          ></span>
+          {i18n.contact.badge || "Contacto Directo"}
+        </span>
+        <span class="text-xs text-paragraph opacity-70">
+          · Respuesta en menos de 24h
+        </span>
+      </div>
+
+      <h1
+        class="text-4xl sm:text-5xl font-extrabold tracking-tight text-title leading-tight w-full"
+      >
+        {i18n.contact.heading || "Hablemos de tu proyecto"}
+      </h1>
+
+      <p class="text-base sm:text-lg text-paragraph leading-relaxed w-full">
+        {
+          i18n.contact.description ||
+            "¿Tienes dudas sobre T.E.R.R.A. o te interesa agendar una demostración en vivo? Escríbenos y nuestro equipo se pondrá en contacto contigo."
+        }
+      </p>
+    </section>
+
+    <!-- MAIN CONTACT GRID -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-start">
+      <!-- COLUMNA IZQUIERDA: INFORMACIÓN DE CONTACTO (timeline unificado) -->
+      <div class="lg:col-span-5">
+        <div
+          class="reveal-on-scroll rounded-2xl bg-sidebar-bg/60 border border-sidebar-border shadow-lg overflow-hidden"
+        >
+          {
+            i18n.contact.cards.map((card) => (
+              <div class="reveal-on-scroll p-6 rounded-2xl bg-sidebar-bg/80 border border-sidebar-border shadow-lg space-y-3">
+                <div class="w-10 h-10 rounded-xl bg-primary-bg-button/20 border border-primary-border-button flex items-center justify-center text-title">
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d={card.icon}
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-sm font-semibold text-subtitle uppercase tracking-wider">
+                    {card.emailTitle}
+                  </h3>
+                  <p class="text-xs text-paragraph opacity-80 mt-0.5">
+                    {card.emailSubtitle}
+                  </p>
+                  <a
+                    href={card.href}
+                    class="inline-block text-title font-semibold mt-2 hover:underline transition-all"
+                  >
+                    {card.value}
+                  </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- COLUMNA DERECHA: FORMULARIO GLASS -->
+      <div class="lg:col-span-7">
+        <form
+          class="reveal-on-scroll p-8 sm:p-10 rounded-2xl bg-sidebar-bg/60 border border-sidebar-border space-y-6 shadow-xl"
+        >
+          <div class="space-y-1">
+            <h2 class="text-2xl font-bold text-title">Envíanos un mensaje</h2>
+            <p class="text-xs text-paragraph">
+              Llena los campos a continuación y responderemos a la brevedad.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Nombre -->
+            <div class="space-y-2">
+              <label
+                for="name"
+                class="block text-xs font-semibold text-subtitle uppercase tracking-wider"
+                >Nombre completo</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Ej. Carlos Mendoza"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-secondary-bg-button/60 border border-secondary-border-button text-title text-sm placeholder:text-paragraph/40 focus:outline-none focus:border-primary-border-button focus:ring-1 focus:ring-primary-border-button transition-all"
+              />
+            </div>
+
+            <!-- Correo -->
+            <div class="space-y-2">
+              <label
+                for="email"
+                class="block text-xs font-semibold text-subtitle uppercase tracking-wider"
+                >Correo Electrónico</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="tu@correo.com"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-secondary-bg-button/60 border border-secondary-border-button text-title text-sm placeholder:text-paragraph/40 focus:outline-none focus:border-primary-border-button focus:ring-1 focus:ring-primary-border-button transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- Asunto: pills seleccionables en vez de <select> -->
+          <div class="space-y-2">
+            <span
+              class="block text-xs font-semibold text-subtitle uppercase tracking-wider"
+              >Asunto / Interés</span
+            >
+            <div
+              class="flex flex-wrap gap-2"
+              role="radiogroup"
+              aria-label="Asunto / Interés"
+            >
+              {
+                subjects.map((subject, index) => (
+                  <label class="cursor-pointer">
+                    <input
+                      type="radio"
+                      name="subject"
+                      value={subject.id}
+                      checked={index === 0}
+                      class="peer sr-only"
+                    />
+                    <span class="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium border border-secondary-border-button bg-secondary-bg-button/60 text-paragraph transition-all peer-checked:bg-primary-bg-button peer-checked:text-title peer-checked:border-primary-border-button peer-focus-visible:ring-2 peer-focus-visible:ring-primary-border-button">
+                      {subject.label}
+                    </span>
+                  </label>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Mensaje -->
+          <div class="space-y-2">
+            <label
+              for="message"
+              class="block text-xs font-semibold text-subtitle uppercase tracking-wider"
+              >Mensaje</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Escribe tu mensaje o detalles sobre tu parcela/institución..."
+              required
+              class="w-full px-4 py-3 rounded-xl bg-secondary-bg-button/60 border border-secondary-border-button text-title text-sm placeholder:text-paragraph/40 focus:outline-none focus:border-primary-border-button focus:ring-1 focus:ring-primary-border-button transition-all resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Botón Enviar -->
+          <button
+            type="submit"
+            class="w-full group py-3.5 rounded-xl bg-primary-bg-button text-title font-semibold text-sm transition-all duration-200 border border-primary-border-button shadow-lg hover:opacity-90 active:scale-[0.99] inline-flex items-center justify-center gap-2"
+          >
+            Enviar Mensaje
+            <svg
+              class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</MainLayout>
+
+<!-- Estilos CSS optimizados para el viewport -->
+<style>
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<!-- Script para el IntersectionObserver -->
+<script>
+  const setupIntersectionObserver = () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15,
+      },
+    );
+
+    document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
+      observer.observe(el);
+    });
+  };
+
+  setupIntersectionObserver();
+  document.addEventListener("astro:after-swap", setupIntersectionObserver);
+</script>
