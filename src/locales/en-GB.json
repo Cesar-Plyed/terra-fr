@@ -1,15 +1,259 @@
 {
-  "home": {
-    "title": "My portfolio",
-    "subtitle": "Welcome to my portfolio",
-    "description": "On this page you'll see all my GitHub repositories",
-    "title2": " Repositories",
-    "favoritesTitle": "This are my favorite repositoryes"
+  "language": "en",
+  "meta": {
+    "title": "T.E.R.R.A. - Strategic Agri-Environmental Reconnaissance and Tracking Rover",
+    "description": "Autonomous solar-powered agricultural robot for real-time soil moisture monitoring and irrigation optimization in precision agriculture.",
+    "keywords": [
+      "agrotech",
+      "smart irrigation",
+      "soil monitoring",
+      "solar agricultural robot",
+      "sustainability",
+      "precision agriculture",
+      "Aguascalientes",
+      "water efficiency"
+    ],
+    "slug": "terra-agrotech-solar"
   },
-
-  "about.title": "About Me",
-  "about.description": "Full-Stack Developer | Passionate about Microservices & Scalable Solutions: I am a Full-Stack Developer focused on building efficient and secure digital products. My most significant achievement is developing a Role-Based Dashboard using a microservices architecture, which allowed for better data management and system security. I have experience with a wide tech stack including Java, PHP, C#, and JavaScript, working with frameworks like React, Angular, and Laravel. I enjoy solving complex problems using Agile methodologies (Scrum) and integrating AI tools to optimize development workflows. Currently looking for my next challenge as a Junior Full-Stack Developer to contribute to innovative projects and continue growing professionally.",
-
-  "contact.title": "Contact",
-  "contact.description": "Get in touch."
+  "hero": {
+    "badge": "Sustainable Agrotech Innovation",
+    "title": "T.E.R.R.A.",
+    "fullTitle": "Strategic Agri-Environmental Reconnaissance and Tracking Rover",
+    "subtitle": "Smart soil monitoring for responsible and efficient water use.",
+    "description": "An autonomous solar-powered agricultural robot that measures soil moisture zone by zone, delivering precise real-time data without relying on internet access or the power grid.",
+    "primaryCTA": "Request a Demo",
+    "secondaryCTA": "See Value Proposition"
+  },
+  "problem": {
+    "title": "The Water Challenge in Agriculture",
+    "subtitle": "Water is the most expensive resource to waste and the least measured.",
+    "description": "In regions with high temperatures and prolonged droughts, like Aguascalientes, irrigation based on schedules or intuition leads to massive losses of water and financial resources.",
+    "painPoints": [
+      {
+        "id": "irrigation_without_data",
+        "title": "Blind Irrigation",
+        "description": "Most small and medium-sized producers irrigate out of habit or by schedule, not based on real soil moisture data, wasting water where it isn't needed.",
+        "impact": "High water waste and unnecessary operating costs."
+      },
+      {
+        "id": "high_barriers",
+        "title": "Inaccessible Technology",
+        "description": "Existing commercial solutions are extremely expensive ($4,000 to $50,000 MXN) and require complex infrastructure.",
+        "impact": "Exclusion of small producers, community gardens, and schools."
+      },
+      {
+        "id": "infrastructure_dependency",
+        "title": "Dependence on Grid and Internet",
+        "description": "Traditional smart systems fail or cannot be installed in areas without internet coverage or grid electricity.",
+        "impact": "Unviable adoption in isolated or rural land."
+      }
+    ]
+  },
+  "solution": {
+    "title": "The T.E.R.R.A. Solution",
+    "subtitle": "Mobility + Moisture Sensors + Solar Power in a single low-cost platform.",
+    "description": "T.E.R.R.A. is a mobile robot powered 100% by solar energy that autonomously travels across the terrain, measuring soil moisture in real time. Unlike a rigid automated system, T.E.R.R.A. empowers the producer by giving them precise information to decide exactly where and how much to irrigate.",
+    "features": [
+      {
+        "code": "SOLAR_POWER",
+        "title": "Autonomous Solar Navigation",
+        "description": "Fully powered by solar panels, operating without drawing from the electrical grid.",
+        "icon": "sun"
+      },
+      {
+        "code": "REALTIME_SENSING",
+        "title": "Real-Time Sensing",
+        "description": "Measures moisture levels in the soil profile point by point with high precision.",
+        "icon": "activity"
+      },
+      {
+        "code": "OFFLINE_OP",
+        "title": "Internet-Free Operation",
+        "description": "Operates completely independently of Wi-Fi or mobile network connections.",
+        "icon": "wifi-off"
+      },
+      {
+        "code": "ANOMALY_DETECTION",
+        "title": "Anomaly Detection",
+        "description": "Identifies atypical moisture variations to prevent water stress or waterlogging.",
+        "icon": "alert-circle"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Key Benefits",
+    "items": [
+      {
+        "title": "Significant Water Savings",
+        "description": "Reduces water resource waste by applying irrigation only in zones with an actual need.",
+        "category": "Ecological"
+      },
+      {
+        "title": "Data-Driven Decision Making",
+        "description": "Replaces intuition with precise technical and visual diagnostics.",
+        "category": "Strategic"
+      },
+      {
+        "title": "Zero Operating Energy Cost",
+        "description": "100% solar-powered, eliminating recurring costs for electricity or disposable batteries.",
+        "category": "Economic"
+      },
+      {
+        "title": "Low Acquisition Cost",
+        "description": "Optimized prototyping and engineering with an approximate electronics cost of $2,165 MXN.",
+        "category": "Economic"
+      },
+      {
+        "title": "Inclusive and Educational",
+        "description": "Ideal for small producers, school gardens, university projects, and research.",
+        "category": "Social"
+      },
+      {
+        "title": "Agricultural Scalability",
+        "description": "Adaptable platform for incorporating additional sensors in advanced research projects.",
+        "category": "Technological"
+      }
+    ]
+  },
+  "valueProposition": {
+    "title": "Unique Value Proposition",
+    "statement": "T.E.R.R.A. doesn't compete to be the most sophisticated system on the market — it competes to be the most accessible without sacrificing data intelligence.",
+    "comparisonTable": {
+      "headers": {
+        "option": "Irrigation / Monitoring Option",
+        "approxPrice": "Approx. Price (MXN)",
+        "mainLimitation": "Main Limitation",
+        "terraAdvantage": "T.E.R.R.A.'s Competitive Advantage"
+      },
+      "rows": [
+        {
+          "option": "Automatic Timer",
+          "approxPrice": "$1,500 – $3,000 MXN",
+          "mainLimitation": "Irrigates on a fixed schedule, regardless of whether the soil is already saturated.",
+          "terraAdvantage": "Real sensing: avoids irrigating when the soil already has sufficient moisture."
+        },
+        {
+          "option": "Wi-Fi Smart Sensors",
+          "approxPrice": "$4,000 – $8,000 MXN",
+          "mainLimitation": "Requires constant internet coverage and nearby grid power.",
+          "terraAdvantage": "Fully autonomous in power and requires no internet."
+        },
+        {
+          "option": "Professional Automated System",
+          "approxPrice": "$15,000 – $50,000 MXN",
+          "mainLimitation": "Extremely high investment and maintenance cost.",
+          "terraAdvantage": "A fraction of the cost with mobility that covers large areas."
+        },
+        {
+          "option": "T.E.R.R.A. (Solar Robot)",
+          "approxPrice": "≈ $2,165 MXN (Electronics)",
+          "mainLimitation": "Informational (provides data to inform decisions, does not irrigate directly)",
+          "terraAdvantage": "Maximum accessibility, mobility, solar autonomy, and precise data."
+        }
+      ]
+    }
+  },
+  "targetAudience": {
+    "title": "Who Is T.E.R.R.A. For?",
+    "demographics": {
+      "ageRange": "18 - 60 years",
+      "profile": "People focused on agricultural optimization, sustainability, and accessible technological innovation."
+    },
+    "segments": [
+      {
+        "title": "Small and Medium-Sized Producers",
+        "description": "Open-field and greenhouse farmers looking to optimize water use without making million-dollar investments.",
+        "useCase": "Periodic monitoring of plots to adjust irrigation timing and volume."
+      },
+      {
+        "title": "Educational Institutions and School Gardens",
+        "description": "Middle schools, high schools, and universities with agroecology, robotics, or sustainability programs.",
+        "useCase": "Interactive teaching tool for soil science, automation, and clean energy."
+      },
+      {
+        "title": "Agri-Environmental Technicians and Researchers",
+        "description": "Research centers and agricultural advisors that need to collect low-cost field data.",
+        "useCase": "Experimental platform for collecting soil moisture time-series data."
+      }
+    ]
+  },
+  "technicalAndImpact": {
+    "title": "Technical Foundation and SDG Alignment",
+    "technicalFoundation": [
+      "Precision Agriculture Principles",
+      "Direct monitoring of volumetric soil moisture",
+      "Mobile robotics and low-power automation",
+      "Integrated photovoltaic energy generation and management"
+    ],
+    "sdgAlignment": [
+      {
+        "code": "SDG 6",
+        "name": "Clean Water and Sanitation",
+        "impact": "Promotes sustainable water management by reducing agricultural waste."
+      },
+      {
+        "code": "SDG 7",
+        "name": "Affordable and Clean Energy",
+        "impact": "Operation based 100% on renewable solar energy with no carbon footprint."
+      },
+      {
+        "code": "SDG 9",
+        "name": "Industry, Innovation and Infrastructure",
+        "impact": "Democratizes robotics and the Internet of Things in the field."
+      },
+      {
+        "code": "SDG 13",
+        "name": "Climate Action",
+        "impact": "Increases agricultural resilience against droughts and extreme weather events."
+      }
+    ]
+  },
+  "callToAction": {
+    "title": "Ready to transform irrigation on your plot or at your institution?",
+    "description": "We invite you to get to know T.E.R.R.A. Schedule a live demonstration of the prototype and discover how to optimize your resources.",
+    "primaryButton": "Request a Demo",
+    "secondaryButton": "Direct Contact",
+    "contactInfo": {
+      "region": "Aguascalientes, Mexico",
+      "availability": "Prototype demonstrations by appointment"
+    }
+  },
+  "contact": {
+    "title": "Contact | T.E.R.R.A.",
+    "badge": "Direct Contact",
+    "heading": "Let's talk about your project",
+    "description": "Have questions about T.E.R.R.A. or want to schedule a live demonstration? Write to us and our team will get in touch with you.",
+    "cards": [
+      {
+      "emailTitle": "Email",
+      "emailSubtitle": "Write to us for general or business inquiries.",
+      "locationTitle": "Location & Coverage",
+      "locationSubtitle": "Operations and agricultural testing center.",
+      "locationValue": "Aguascalientes, Mexico",
+      "hoursTitle": "Business Hours",
+      "hoursValue": "Monday to Friday: 8:00 AM – 6:00 PM (CST)",
+      "icon": "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+      "href":"mailto:contacto@terra-project.com",
+      "value": "contacto@terra-project.com"
+    }
+    ],
+    "form": {
+      "title": "Send us a message",
+      "subtitle": "Fill in the fields below and we'll respond as soon as possible.",
+      "nameLabel": "Full Name",
+      "namePlaceholder": "E.g. Carlos Mendoza",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@email.com",
+      "subjectLabel": "Subject / Interest",
+      "options": {
+        "demo": "Request a Live Demonstration",
+        "info": "Technical Information about the Prototype",
+        "collab": "Partnership / Institutional Project",
+        "other": "Other subject"
+      },
+      "messageLabel": "Message",
+      "messagePlaceholder": "Write your message or details about your plot/institution...",
+      "submitButton": "Send Message"
+    }
+  }
 }
