@@ -40,10 +40,12 @@
     muted
     loop
     playsinline
+    webkit-playsinline
+    preload="metadata"
     id="pitchVideo"
     class="absolute inset-0 w-full h-full object-cover"
   >
-    <source src="/terra_desk_video_pith.mp4" />
+    <source src="/terra_desk_video_pitch.mp4" />
   </video>
 </div>
 
@@ -63,11 +65,13 @@
     );
   });
 
-  // Solo reproduce el video cuando esté 100% visible (sin el navbar encima)
+  // Reproduce el video cuando esté mayormente visible (umbral relajado
+  // para que funcione en mobile, donde la barra del navegador cambia
+  // el alto real del viewport y rara vez llega a 98%).
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.98) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
           video.play().catch(() => {});
         } else {
           video.pause();
@@ -75,9 +79,16 @@
       });
     },
     {
-      threshold: [0, 0.98, 1],
+      threshold: [0, 0.6, 1],
     },
   );
 
   observer.observe(video);
+
+  // Si el navegador móvil cambia el alto del viewport (al mostrar/ocultar
+  // la barra de direcciones), forzamos que el observer reevalúe.
+  window.addEventListener("resize", () => {
+    observer.unobserve(video);
+    observer.observe(video);
+  });
 </script>
