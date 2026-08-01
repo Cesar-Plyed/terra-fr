@@ -25,6 +25,7 @@
     "secondaryCTA": "See Value Proposition"
   },
   "problem": {
+    "label": "Problem",
     "title": "The Water Challenge in Agriculture",
     "subtitle": "Water is the most expensive resource to waste and the least measured.",
     "description": "In regions with high temperatures and prolonged droughts, like Aguascalientes, irrigation based on schedules or intuition leads to massive losses of water and financial resources.",
@@ -50,6 +51,7 @@
     ]
   },
   "solution": {
+    "label": "Solution",
     "title": "The T.E.R.R.A. Solution",
     "subtitle": "Mobility + Moisture Sensors + Solar Power in a single low-cost platform.",
     "description": "T.E.R.R.A. is a mobile robot powered 100% by solar energy that autonomously travels across the terrain, measuring soil moisture in real time. Unlike a rigid automated system, T.E.R.R.A. empowers the producer by giving them precise information to decide exactly where and how much to irrigate.",
@@ -81,6 +83,7 @@
     ]
   },
   "benefits": {
+    "label": "Benefits",
     "title": "Key Benefits",
     "items": [
       {

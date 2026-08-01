@@ -13,10 +13,13 @@
   },
   "dependencies": {
     "@astrojs/react": "^6.0.2",
+    "@atmtfy/video-background": "^0.8.0",
+    "@iconify-json/lucide": "^1.2.121",
     "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "astro": "^7.1.6",
+    "astro-icon": "^1.1.5",
     "lenis": "^1.3.25",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",

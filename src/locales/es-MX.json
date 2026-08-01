@@ -25,6 +25,7 @@
     "secondaryCTA": "Ver Propuesta de Valor"
   },
   "problem": {
+    "label": "Problema",
     "title": "El Desafío del Agua en la Agricultura",
     "subtitle": "El agua es el recurso más caro de desperdiciar y el que menos se mide.",
     "description": "En regiones con altas temperaturas y sequías prolongadas, como Aguascalientes, el riego por calendario o intuición genera pérdidas masivas de agua y recursos financieros.",
@@ -50,6 +51,7 @@
     ]
   },
   "solution": {
+    "label": "Solución",
     "title": "La Solución T.E.R.R.A.",
     "subtitle": "Movilidad + Sensores de Humedad + Energía Solar en una sola plataforma de bajo costo.",
     "description": "T.E.R.R.A. es un robot móvil con alimentación 100% solar que recorre el terreno de manera autónoma midiendo la humedad del suelo en tiempo real. A diferencia de un sistema automatizado rígido, T.E.R.R.A. empodera al productor dándole la información precisa para decidir exactamente dónde y cuánto regar.",
@@ -81,6 +83,7 @@
     ]
   },
   "benefits": {
+    "label": "Beneficios",
     "title": "Beneficios Clave",
     "items": [
       {

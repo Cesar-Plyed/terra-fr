@@ -16,15 +16,15 @@ export const getNavItems = (langPrefix: string): NavItem[] => {
     return [
       { label: 'Inicio', href: `${langPrefix}/` },
       { label: 'Acerca de nosotros', href: `${langPrefix}/about` },
-      { label: 'Contacto', href: `${langPrefix}/contact` },
+      { label: 'Contáctanos', href: `${langPrefix}/contact` },
     ];
   }
 
   // default en-GB
   return [
     { label: 'Home', href: `${langPrefix}/` },
-    { label: 'About Me', href: `${langPrefix}/about` },
-    { label: 'Contact', href: `${langPrefix}/contact` },
+    { label: 'About Us', href: `${langPrefix}/about` },
+    { label: 'Contact Us', href: `${langPrefix}/contact` },
   ];
 };
 

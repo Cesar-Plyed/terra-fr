@@ -1,37 +1,194 @@
 ---
+import en from "@/locales/en-GB.json";
+import es from "@/locales/es-MX.json";
+import VideoTerra from "@components/ui/VideoTerra.astro";
+import Icon from "@components/ui/Icon.astro";
 
+type TranslationSchema = typeof es;
+
+const { lang } = Astro.params;
+
+const translations: Record<string, TranslationSchema> = {
+  "es-MX": es,
+  "en-GB": en as unknown as TranslationSchema,
+};
+
+const currentLang = lang && lang in translations ? lang : "es-MX";
+const i18n = translations[currentLang];
+
+const title = i18n.meta.title;
+
+const keywords = i18n.meta.keywords;
 ---
 
-<main
-  class="w-full min-h-[calc(100vh-80px)] flex items-center justify-center p-4 md:p-8 lg:p-12"
->
-  <div
-    class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
-  >
-    <!-- Contenedor del Video -->
-    <div class="md:col-span-5 lg:col-span-4 w-full flex justify-center">
-      <div
-        class="w-full aspect-3/4 max-w-sm border-2 border-dashed border-gray-400 rounded-lg flex items-center justify-center bg-gray-50"
-      >
-        <!-- Aquí irá tu componente Atmtfy / Video -->
-        <span class="text-gray-500 font-medium text-lg -rotate-45 md:rotate-0">
-          &lt;Video&gt;
-        </span>
-      </div>
-    </div>
+<main class="w-full">
+  <!-- Sección 1: Video a pantalla completa -->
+  <section class="relative w-full h-screen overflow-hidden">
+    <VideoTerra />
 
-    <!-- Descripción del Proyecto -->
+    <!-- Indicador de scroll (opcional) -->
     <div
-      class="md:col-span-7 lg:col-span-8 w-full text-center md:text-left flex flex-col justify-center space-y-4"
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white animate-bounce"
+    >
+      <span class="text-sm font-medium">Desliza para más</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M12 5v14"></path>
+        <path d="M19 12l-7 7-7-7"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Sección 2: Descripción del proyecto -->
+  <section
+    class="w-full min-h-screen flex flex-col items-center justify-center mt-16 p-4 md:p-8 lg:p-12"
+  >
+    <div
+      class="max-w-5xl w-full text-center md:text-left flex flex-col justify-center space-y-4"
     >
       <h2 class="text-2xl md:text-3xl font-bold text-subtitle">
-        Descripción del proyecto
+        {i18n.meta.title}
       </h2>
       <p class="text-paragraph leading-relaxed max-w-full">
-        Aquí puedes agregar el texto descriptivo de tu proyecto. El contenido se
-        adaptará responsivamente en móviles debajo del video y a la derecha en
-        pantallas grandes.
+        {i18n.meta.description}
       </p>
+      <div class="flex flex-row gap-1">
+        {
+          keywords.map((item) => (
+            <p class="w-fit h-full px-4 py-1.5 relative rounded-full border bg-primary-bg-button text-title border-secondary-border-button text-xs">
+              {item[0].toUpperCase() + item.substring(1)}
+            </p>
+          ))
+        }
+      </div>
     </div>
-  </div>
+    <section
+      class="w-full min-h-screen flex items-center justify-center p-4 md:p-8 lg:p-12"
+    >
+      <div class="max-w-5xl w-full flex flex-col space-y-8">
+        <h1
+          class="text-4xl sm:text-5xl font-extrabold tracking-tight text-dark-title leading-tight w-full"
+        >
+          {i18n.problem.label}
+        </h1>
+        <!-- Encabezado -->
+        <div class="text-center md:text-left flex flex-col space-y-4">
+          <h2 class="text-2xl md:text-3xl font-bold text-subtitle">
+            {i18n.problem.title}
+          </h2>
+          <p class="text-paragraph font-medium leading-relaxed max-w-full">
+            {i18n.problem.subtitle}
+          </p>
+          <p class="text-paragraph leading-relaxed max-w-full">
+            {i18n.problem.description}
+          </p>
+        </div>
+
+        <!-- Pain Points -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {
+            i18n.problem.painPoints.map((point) => (
+              <div class="flex flex-col gap-3 p-6 rounded-2xl border border-secondary-border-button bg-primary-bg-button">
+                <h3 class="text-lg font-bold text-title">{point.title}</h3>
+                <p class="text-paragraph text-sm leading-relaxed">
+                  {point.description}
+                </p>
+                <p class="text-xs font-semibold text-title/70 mt-auto pt-2 border-t border-secondary-border-button">
+                  {point.impact}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <!-- Sección Solution -->
+    <section
+      class="w-full min-h-screen flex items-center justify-center p-4 md:p-8 lg:p-12"
+    >
+      <div class="max-w-5xl w-full flex flex-col space-y-8">
+        <h1
+          class="text-4xl sm:text-5xl font-extrabold tracking-tight text-dark-title leading-tight w-full"
+        >
+          {i18n.solution.label}
+        </h1>
+
+        <!-- Encabezado -->
+        <div class="text-center md:text-left flex flex-col space-y-4">
+          <h2 class="text-2xl md:text-3xl font-bold text-subtitle">
+            {i18n.solution.title}
+          </h2>
+          <p class="text-paragraph font-medium leading-relaxed max-w-full">
+            {i18n.solution.subtitle}
+          </p>
+          <p class="text-paragraph leading-relaxed max-w-full">
+            {i18n.solution.description}
+          </p>
+        </div>
+
+        <!-- Features -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {
+            i18n.solution.features.map((feature) => (
+              <div class="flex gap-4 p-6 rounded-2xl border border-secondary-border-button bg-primary-bg-button">
+                <div class="shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-secondary-border-button/20 text-title">
+                  <Icon name={`lucide:${feature.icon}`} class="w-5 h-5" />
+                </div>
+                <div class="flex flex-col gap-1">
+                  <h3 class="text-lg font-bold text-title">{feature.title}</h3>
+                  <p class="text-paragraph text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Benefits -->
+    <section
+      class="w-full min-h-screen flex items-center justify-center p-4 md:p-8 lg:p-12"
+    >
+      <div class="max-w-5xl w-full flex flex-col space-y-8">
+        <h1
+          class="text-4xl sm:text-5xl font-extrabold tracking-tight text-dark-title leading-tight w-full"
+        >
+          {i18n.benefits.label}
+        </h1>
+
+        <!-- Encabezado -->
+        <div class="text-center md:text-left flex flex-col space-y-4">
+          <h2 class="text-2xl md:text-3xl font-bold text-subtitle">
+            {i18n.benefits.title}
+          </h2>
+        </div>
+
+        <!-- Items -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            i18n.benefits.items.map((item) => (
+              <div class="flex flex-col gap-3 p-6 rounded-2xl border border-secondary-border-button bg-primary-bg-button">
+                <p class="w-fit h-fit px-3 py-1 rounded-full border bg-primary-bg-button text-title border-secondary-border-button text-xs">
+                  {item.category}
+                </p>
+                <h3 class="text-lg font-bold text-title">{item.title}</h3>
+                <p class="text-paragraph text-sm leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </section>
 </main>

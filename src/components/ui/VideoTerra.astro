@@ -1,0 +1,83 @@
+<div class="relative w-full h-full">
+  <button
+    id="muteBtn"
+    aria-label="Mutear video"
+    class="absolute bottom-4 right-4 z-10 rounded-full bg-black/50 p-2 text-white hover:bg-black/70"
+  >
+    <svg
+      id="iconMuted"
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      style="display:block;"
+    >
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <line x1="23" y1="9" x2="17" y2="15"></line>
+      <line x1="17" y1="9" x2="23" y2="15"></line>
+    </svg>
+    <svg
+      id="iconUnmuted"
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      style="display:none;"
+    >
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+    </svg>
+  </button>
+
+  <video
+    muted
+    loop
+    playsinline
+    id="pitchVideo"
+    class="absolute inset-0 w-full h-full object-cover"
+  >
+    <source src="/terra_desk_video_pith.mp4" />
+  </video>
+</div>
+
+<script>
+  const video = document.getElementById("pitchVideo") as HTMLVideoElement;
+  const btn = document.getElementById("muteBtn") as HTMLButtonElement;
+  const iconUnmuted = document.getElementById("iconUnmuted") as HTMLElement;
+  const iconMuted = document.getElementById("iconMuted") as HTMLElement;
+
+  btn.addEventListener("click", () => {
+    video.muted = !video.muted;
+    iconMuted.style.display = video.muted ? "block" : "none";
+    iconUnmuted.style.display = video.muted ? "none" : "block";
+    btn.setAttribute(
+      "aria-label",
+      video.muted ? "Mutear video" : "Activar sonido",
+    );
+  });
+
+  // Solo reproduce el video cuando esté 100% visible (sin el navbar encima)
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.98) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    },
+    {
+      threshold: [0, 0.98, 1],
+    },
+  );
+
+  observer.observe(video);
+</script>

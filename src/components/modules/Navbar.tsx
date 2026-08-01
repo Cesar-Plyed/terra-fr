@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { HamburgerButton } from '@components/ui/HamburgerButton';
-import { getNavItems } from '@components/modules/Sidebar';
+import { useEffect, useState } from "react";
+import { HamburgerButton } from "@components/ui/HamburgerButton";
+import { getNavItems } from "@components/modules/Sidebar";
 
 export interface NavbarProps {
   title?: string;
@@ -8,7 +8,11 @@ export interface NavbarProps {
   lang?: string;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ title, className = '', lang }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  title,
+  className = "",
+  lang,
+}) => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -28,7 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({ title, className = '', lang }) =
           } else if (currentScrollY < lastScrollY) {
             // Scrolling up
             setIsVisible(true);
-          } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          } else if (currentScrollY > lastScrollY && currentScrollY > 80) {
             // Scrolling down and past 100px
             setIsVisible(false);
           }
@@ -41,21 +45,21 @@ export const Navbar: React.FC<NavbarProps> = ({ title, className = '', lang }) =
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
 
-    // derive language prefix from current location (client-side)
-  const [langPrefix, setLangPrefix] = useState('/es-MX');
+  // derive language prefix from current location (client-side)
+  const [langPrefix, setLangPrefix] = useState("/es-MX");
 
   useEffect(() => {
     const path = window.location.pathname;
-    if (path.startsWith('/en-GB')) setLangPrefix('/en-GB');
-    else if (path.startsWith('/es-MX')) setLangPrefix('/es-MX');
-    else setLangPrefix('/es-MX');
+    if (path.startsWith("/en-GB")) setLangPrefix("/en-GB");
+    else if (path.startsWith("/es-MX")) setLangPrefix("/es-MX");
+    else setLangPrefix("/es-MX");
   }, []);
 
   const navItems = getNavItems(langPrefix);
@@ -63,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({ title, className = '', lang }) =
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-30 transition-transform duration-300 ease-in-out h-fit ${
-        isVisible ? 'translate-y-0' : '-translate-y-full'
+        isVisible ? "translate-y-0" : "-translate-y-full"
       } ${className}`}
     >
       <div className="border-b shadow-sm bg-transparent border-none backdrop-blur-sm dark:border-neutral-700">
@@ -72,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = ({ title, className = '', lang }) =
             {/* Logo/Title */}
             <div className="shrink-0">
               <a
-                href={lang === 'en-GB' ? '/en-GB/' : '/es-MX/'}
+                href={lang === "en-GB" ? "/en-GB/" : "/es-MX/"}
                 className="text-2xl font-semibold tracking-tight transition-colors duration-200 text-title hover:text-dark-title border-none"
               >
                 {title}
@@ -81,18 +85,19 @@ export const Navbar: React.FC<NavbarProps> = ({ title, className = '', lang }) =
 
             <nav>
               <ul className=" items-center gap-2 list-none hidden md:flex">
-                {navItems.map((item) => (
-                  <li 
-                    key={item.href}
-                    className="px-3 py-2 transition-colors duration-200 rounded-sm cursor-pointer text-sidebar-text hover:bg-sidebar-item-bg-active hover:text-sidebar-text-active"
+                {navItems.map((item, index) => (
+                  <a
+                    href={item.href}
+                    className="flex items-center gap-3 font-medium focus-ring"
+                    key={index}
                   >
-                    <a
-                      href={item.href}
-                      className="flex items-center gap-3 font-medium focus-ring"
+                    <li
+                      key={item.href}
+                      className="px-3 py-2 transition-colors duration-200 rounded-sm cursor-pointer text-sidebar-text hover:bg-sidebar-item-bg-active hover:text-sidebar-text-active"
                     >
                       <span>{item.label}</span>
-                    </a>
-                  </li>
+                    </li>
+                  </a>
                 ))}
               </ul>
             </nav>

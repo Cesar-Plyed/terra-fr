@@ -21,9 +21,6 @@ const i18n = translations[currentLang];
 
 const title = i18n.meta.title;
 
-// Colores oficiales de la ONU para los Objetivos de Desarrollo Sostenible.
-// Usar el color real de cada ODS convierte el bloque en información
-// reconocible en vez de una tarjeta genérica más.
 const sdgColors: Record<number, string> = {
   1: "#E5243B",
   2: "#DDA63A",
@@ -328,7 +325,7 @@ const getSdgColor = (code: string) => {
       <div class="flex flex-wrap justify-center gap-4 pt-4">
         <!-- Botón Primario -->
         <a
-          href="/es-MX/OnDevelop"
+          href="/es-MX/ondevelop"
           class="group inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary-bg-button text-title font-semibold text-sm transition-all duration-200 border border-primary-border-button shadow-md hover:opacity-90"
         >
           {i18n.callToAction.primaryButton}
